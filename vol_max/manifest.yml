@@ -1,0 +1,5 @@
+applications:
+- name: volunteer-hack-enpicket
+  buildpack: https://github.com/ActiveState/heroku-buildpack-php.git
+  mem: 128M
+  url: volunteer-hack-enpicket.15.126.231.221.xip.io
