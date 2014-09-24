@@ -26,7 +26,7 @@ function createProfile() {
 	var skills = $('#update-volunteer-skills').val().split(',');
 	$.ajax({
 		type: "POST",
-		url: "http://volunteer-hack-enpicket.15.126.231.221.xip.io/create_volunteer.php",
+		url: "create_volunteer.php",
 		data: {
 			fname: fname,
 			lname: lname,
