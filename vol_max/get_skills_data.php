@@ -11,6 +11,7 @@
 	 
 	 //print_r($skills_array);
 	 echo json_encode($skills_array);
+	 
 	 function getSkillsFromFile ($file){
 		$file_handle = fopen($file, "r") or die("Unable to open file $file!");
 		$skills = array();

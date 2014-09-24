@@ -18,7 +18,7 @@
 		}
 		
 		private function sendRequest($action, $query = NULL, $type = 'GET') {
-			$headers_string = $_COOKIE['vmapi_session_headers'];
+			//$headers_string = $_COOKIE['vmapi_session_headers'];
 			if (!empty($headers_string))
 				self::$lastHeaders = json_decode($headers_string);
 			
@@ -42,7 +42,7 @@
 				
 				self::$lastHeaders = $header_array;
 				// by default, expire headers in 10 minutes
-				setcookie('vmapi_session_headers', json_encode(self::$lastHeaders), $timestamp + 600, '/');
+				//setcookie('vmapi_session_headers', json_encode(self::$lastHeaders), $timestamp + 600, '/');
 			}
 			
 			$json_query = json_encode($query);
@@ -55,6 +55,11 @@
 			// upon reviewing the code for this class, drupal_http_request() is the only method
 			// dependant upon drupal. in order to make the entire class drupal-independant
 			// we would have to use a native PHP method for sending HTTP requests.
+			print_r(self::$lastHeaders);
+			print "</br>";
+			print "<p>URL: $url</p>";
+			print "<p>TYPE: $type</p>";
+			
 			self::$lastResponse = drupal_http_request($url, self::$lastHeaders, $type);
 			if (self::$lastResponse->code > 200)
 				print_r(self::$lastResponse);
@@ -244,16 +249,11 @@
 		}
 	}
 
-/**
- * example use:
- 
- VolunteerMatchAPI::init('http://www.volunteermatch.org/api/call',
-							'abcdefghijklmnopqrstuvwxyz',
-							'username');
- $data = VolunteerMatchAPI::testing();
- 
- */
+VolunteerMatchAPI::init('http://www.volunteermatch.org/api/call',
+							'a483313bf90678ae438c397171a5e00f',
+							'odca_site_1');
+$data = VolunteerMatchAPI::testing();
+print "$data</br>";
 	
-	
-//?>
+?>
 
